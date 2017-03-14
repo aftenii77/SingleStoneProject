@@ -12,7 +12,7 @@ public class Hooks {
 	
 private static WebDriver driver;
 	
-	@Before // It runs before each test
+	@Before 
 	public void setDriver() {
 		
 		System.setProperty(Config.getProperty("webdriver"), 
