@@ -26,7 +26,6 @@ private static WebDriver driver;
 	
 	@After
 	public void tearDown(){
-		//closing the browser after the execution
 		driver.close();
 	}
 
