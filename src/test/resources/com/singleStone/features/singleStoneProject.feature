@@ -7,7 +7,7 @@ Background:
 @Test
 Scenario Outline: The user should search for "hygieia"
    When User enters "<searchingItem>" in the search input box
-   Then User should see "<count>" or more number of repos
+   And User should see "<count>" or more number of repos
    And  User selects CapitalOne/Hygieia repository
    Then User should see following headers with following counts:
 	   |commits     |1000|

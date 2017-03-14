@@ -30,7 +30,6 @@ import cucumber.api.java.en.When;
 import gherkin.formatter.model.DataTableRow;
 
 public class Search_Step_Def extends Base{
-	//Second commit
 	
 	HomePage homePage;
 	SearchResultsPage searchResultsPage;
@@ -63,8 +62,9 @@ public class Search_Step_Def extends Base{
 	public void User_should_see_following_headers(Map<String,Integer> headers) throws Throwable {
 		int actualCommitsCount=0;
 		int actualNumBranches = 0;
-	    int actualNumRealeases = 0;
+	    int actualNumReleases = 0;
 	    int actualNumContributors = 0;
+	    
 		for(WebElement header : searchResultsPage.headers){
 			String text=header.getText();
 			String[] arrText=text.split(" ");
@@ -80,7 +80,7 @@ public class Search_Step_Def extends Base{
 					actualNumBranches=Integer.valueOf(arrText[0].replace(",", ""));
 					break;
 				case "releases":
-					actualNumRealeases=Integer.valueOf(arrText[0].replace(",", ""));
+					actualNumReleases=Integer.valueOf(arrText[0].replace(",", ""));
 					break;
 				case "contributors":
 					actualNumContributors=Integer.valueOf(arrText[0].replace(",", ""));
@@ -88,12 +88,10 @@ public class Search_Step_Def extends Base{
 			}
 		}
 		
-		//System.out.println(actualCommitsCount+" "+actualNumBranches+" "+actualNumRealeases+" "+actualNumContributors);
-  
-	    assertTrue(actualCommitsCount>=headers.get("commits"));
-	    assertTrue(actualNumBranches>=headers.get("branches"));
-	    assertTrue(actualNumRealeases>=headers.get("releases"));
-	    assertTrue(actualNumContributors>=headers.get("contributors"));
+	    assertTrue("Number of commits is less than 1000",actualCommitsCount>=headers.get("commits"));
+	    assertTrue("Number of brunches is less than 4",actualNumBranches>=headers.get("branches"));
+	    assertTrue("Number of releases is less than 8",actualNumReleases>=headers.get("releases"));
+	    assertTrue("Number of contributors is less than 48",actualNumContributors>=headers.get("contributors"));
 	
 	}
 
